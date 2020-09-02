@@ -20,12 +20,13 @@ export const loadUser = () => async (dispatch) => {
 
   try {
     const res = await axios.get("/api/auth");
-    console.log("inside auth.js get auth route");
+
     dispatch({
       type: USER_LOADED,
       payload: res.data,
     });
   } catch (err) {
+    console.log("error from auth.js");
     dispatch({
       type: AUTH_ERROR,
     });
