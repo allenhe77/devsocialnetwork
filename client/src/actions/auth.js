@@ -9,14 +9,15 @@ import {
 } from "./types";
 
 //load user
-export const loadUser = () => async (dispatch) => {
+export const loadUser = async (dispatch) => {
+  console.log("from loaduser auth.js");
   if (localStorage.token) {
     setAuthToken(localStorage.token);
   }
 
   try {
     const res = await axios.get("/api/auth");
-
+    console.log("inside auth.js get auth route");
     dispatch({
       type: USER_LOADED,
       payload: res.data,
@@ -31,6 +32,7 @@ export const loadUser = () => async (dispatch) => {
 // register user
 
 export const register = ({ name, email, password }) => async (dispatch) => {
+  console.log("from register.js");
   const config = {
     headers: {
       "Content-Type": "application/json",
